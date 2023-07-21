@@ -1,0 +1,41 @@
+CREATE DATABASE inventorydb;
+
+use inventorydb;
+-- Table: Goods
+CREATE TABLE Goods (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Name VARCHAR(255) NOT NULL,
+  Category VARCHAR(255) NOT NULL,
+  Quantity INT NOT NULL,
+  Price DECIMAL(10,2) NOT NULL
+);
+
+-- Table: Vendors
+CREATE TABLE Vendors (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  Name VARCHAR(255) NOT NULL,
+  Contact VARCHAR(255) NOT NULL,
+  Address VARCHAR(255) NOT NULL
+);
+
+-- Table: Bills
+CREATE TABLE Bills (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  VendorID INT NOT NULL,
+  GoodsID INT NOT NULL,
+  Quantity INT NOT NULL,
+  TotalPrice DECIMAL(10,2) NOT NULL,
+  Date DATE NOT NULL,
+  FOREIGN KEY (VendorID) REFERENCES Vendors(ID),
+  FOREIGN KEY (GoodsID) REFERENCES Goods(ID)
+);
+
+-- Table: IssuedGoods
+CREATE TABLE IssuedGoods (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  GoodsID INT NOT NULL,
+  Quantity INT NOT NULL,
+  Date DATE NOT NULL,
+  FOREIGN KEY (GoodsID) REFERENCES Goods(ID)
+);
+

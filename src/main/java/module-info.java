@@ -1,8 +1,9 @@
-module com.example.barasu691 {
+module com.example.demo3 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
-    opens com.example.barasu691 to javafx.fxml;
-    exports com.example.barasu691;
+    opens com.example.demo3 to javafx.fxml;
+    exports com.example.demo3;
 }
